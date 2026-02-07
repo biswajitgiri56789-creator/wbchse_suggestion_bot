@@ -1,0 +1,108 @@
+{
+  "11": {
+    "Bengali": {
+      "Language-1": {
+        "books": [
+          {
+            "name": "সাহিত্যচর্চা",
+            "chapters": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5"]
+          },
+          {
+            "name": "বাঙালির ভাষা ও সংস্কৃতি",
+            "chapters": ["Chapter 1", "Chapter 2", "Chapter 3"]
+          }
+        ]
+      }
+    },
+    "English": {
+      "Language-2": {
+        "books": [
+          {
+            "name": "Rapid Reader",
+            "chapters": ["Chapter 1", "Chapter 2", "Chapter 3"]
+          },
+          {
+            "name": "English Textbook",
+            "chapters": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"]
+          }
+        ]
+      }
+    },
+    "Science": {
+      "Physics": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      "Chemistry": ["Chapter 1", "Chapter 2", "Chapter 3"],
+      "Mathematics": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5"],
+      "Biology": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"]
+    },
+    "Arts": {
+      "History": ["Chapter 1", "Chapter 2", "Chapter 3"],
+      "Geography": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      "Political Science": ["Chapter 1", "Chapter 2", "Chapter 3"],
+      "Philosophy": ["Chapter 1", "Chapter 2"],
+      "Economics": ["Chapter 1", "Chapter 2", "Chapter 3"],
+      "Education": ["Chapter 1", "Chapter 2"]
+    },
+    "Commerce": {
+      "Accountancy": ["Chapter 1", "Chapter 2", "Chapter 3"],
+      "Business Studies": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      "Costing & Taxation": ["Chapter 1", "Chapter 2"],
+      "Commercial Law": ["Chapter 1", "Chapter 2"]
+    }
+  },
+  "12": {
+    "Bengali": {
+      "Language-1": {
+        "books": [
+          {
+            "name": "সাহিত্যচর্চা (Class 12)",
+            "chapters": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"]
+          },
+          {
+            "name": "বাঙালির ভাষা ও সংস্কৃতি (Class 12)",
+            "chapters": ["Chapter 1", "Chapter 2", "Chapter 3"]
+          }
+        ]
+      }
+    },
+    "English": {
+      "Language-2": {
+        "books": [
+          {
+            "name": "Mindscapes",
+            "chapters": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"]
+          },
+          {
+            "name": "The Kaleidoscope",
+            "chapters": ["Chapter 1", "Chapter 2", "Chapter 3"]
+          },
+          {
+            "name": "Rapid Reader",
+            "chapters": ["Chapter 1", "Chapter 2"]
+          }
+        ]
+      }
+    },
+    "Science": {
+      "Physics": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5"],
+      "Chemistry": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      "Mathematics": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6"],
+      "Biology": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"]
+    },
+    "Arts": {
+      "History": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      "Geography": ["Chapter 1", "Chapter 2", "Chapter 3"],
+      "Political Science": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      "Philosophy": ["Chapter 1", "Chapter 2", "Chapter 3"],
+      "Economics": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      "Education": ["Chapter 1", "Chapter 2", "Chapter 3"],
+      "Sociology": ["Chapter 1", "Chapter 2", "Chapter 3"]
+    },
+    "Commerce": {
+      "Accountancy": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+      "Business Studies": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5"],
+      "Costing & Taxation": ["Chapter 1", "Chapter 2", "Chapter 3"],
+      "Commercial Law": ["Chapter 1", "Chapter 2", "Chapter 3"],
+      "Preliminaries of Auditing": ["Chapter 1", "Chapter 2"]
+    }
+  }
+}
