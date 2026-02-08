@@ -1,28 +1,24 @@
 name: Run Telegram Bot
 
 on:
-  workflow_dispatch:  # Manual trigger
   schedule:
-    - cron: '0 * * * *'  # প্রতি ঘন্টায় run
+    - cron: '0 * * * *'   # প্রতি ১ ঘণ্টায়
+  workflow_dispatch:
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt
 
-      - name: Run Bot
+      - name: Run bot once
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
-          POST_INTERVAL: ${{ vars.POST_INTERVAL }}
         run: python bot.py
