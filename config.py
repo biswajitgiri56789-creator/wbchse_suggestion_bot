@@ -1,4 +1,10 @@
-# config.py
-BOT_TOKEN = "8524308010:AAGDJElsP05-7rQEfdEp9bn6XebnaD6l0ic"
-CHANNEL_ID = "@suggestion_notes"
-POST_INTERVAL = 3600  # seconds (1 hour)
+import os
+
+# Telegram Bot Token (from GitHub Secrets)
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+
+# Telegram Channel ID (numeric, from GitHub Secrets)
+CHANNEL_ID = os.environ.get("CHANNEL_ID")
+
+# Post interval (seconds) – optional, default 1 hour
+POST_INTERVAL = int(os.environ.get("POST_INTERVAL", 3600))
