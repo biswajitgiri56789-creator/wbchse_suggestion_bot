@@ -1,75 +1,66 @@
 import json
 import random
-import time
+import os
 from datetime import datetime
-from config import BOT_TOKEN, CHANNEL_ID, POST_INTERVAL
 from telegram import Bot
+
+BOT_TOKEN = os.environ["BOT_TOKEN"]
+CHANNEL_ID = os.environ["CHANNEL_ID"]
 
 bot = Bot(token=BOT_TOKEN)
 
-# Load books and posted questions
 with open("books_data.json", "r", encoding="utf-8") as f:
     books_data = json.load(f)
 
 try:
     with open("posted_questions.json", "r", encoding="utf-8") as f:
-        posted_questions = json.load(f)
+        posted = json.load(f)
 except:
-    posted_questions = {"11": [], "12": []}
+    posted = {"11": [], "12": []}
 
-def generate_question(class_num, book_name, chapter):
-    """
-    AI-style question generator (simple example)
-    """
+def generate_question(book, chapter):
     templates = [
-        f"What is the main concept in {chapter} of {book_name}?",
-        f"Explain one important point from {chapter} ({book_name}).",
-        f"Write a short answer question from {chapter} of {book_name}.",
-        f"Summarize key ideas from {chapter} in {book_name}."
+        f"{chapter} অধ্যায়ের মূল ধারণা লেখো।",
+        f"{chapter} থেকে একটি গুরুত্বপূর্ণ প্রশ্ন লেখো।",
+        f"{chapter} অধ্যায়ের সংক্ষিপ্ত প্রশ্ন তৈরি করো।",
+        f"Explain the core idea of {chapter}."
     ]
     return random.choice(templates)
 
-def select_random_chapter(class_num):
+def run_once():
+    class_num = random.choice(["11", "12"])
     class_data = books_data[class_num]
-    language = random.choice(list(class_data.keys()))
-    lang_data = class_data[language]
-    subject = random.choice(list(lang_data.keys()))
-    subject_data = lang_data[subject]
 
-    if isinstance(subject_data, list):
-        chapter = random.choice(subject_data)
-        book_name = subject
+    lang = random.choice(list(class_data.keys()))
+    subject = random.choice(list(class_data[lang].keys()))
+    data = class_data[lang][subject]
+
+    if isinstance(data, list):
+        chapter = random.choice(data)
+        book = subject
     else:
-        book = random.choice(subject_data["books"])
-        chapter = random.choice(book["chapters"])
-        book_name = book["name"]
+        book_data = random.choice(data["books"])
+        book = book_data["name"]
+        chapter = random.choice(book_data["chapters"])
 
-    return language, subject, book_name, chapter
+    question = generate_question(book, chapter)
 
-def post_to_channel():
-    while True:
-        class_num = random.choice(["11", "12"])
-        language, subject, book_name, chapter = select_random_chapter(class_num)
+    if question in posted[class_num]:
+        return
 
-        question = generate_question(class_num, book_name, chapter)
+    posted[class_num].append(question)
+    with open("posted_questions.json", "w", encoding="utf-8") as f:
+        json.dump(posted, f, ensure_ascii=False, indent=2)
 
-        # Avoid repeat
-        if question in posted_questions[class_num]:
-            continue
-        posted_questions[class_num].append(question)
-        with open("posted_questions.json", "w", encoding="utf-8") as f:
-            json.dump(posted_questions, f, ensure_ascii=False, indent=2)
+    message = (
+        f"📚 Class {class_num}\n"
+        f"📖 Book: {book}\n"
+        f"📘 Chapter: {chapter}\n"
+        f"❓ Question:\n{question}\n\n"
+        f"🕒 {datetime.now().strftime('%d-%m-%Y %H:%M')}"
+    )
 
-        # Prepare message
-        message = f"📚 Class {class_num}\n📝 Book/Subject: {book_name}\n📖 Chapter: {chapter}\n❓ Question: {question}\n🕒 {datetime.now().strftime('%d-%m-%Y %H:%M')}"
-
-        try:
-            bot.send_message(chat_id=CHANNEL_ID, text=message)
-            print(f"Posted: {question}")
-        except Exception as e:
-            print(f"Error: {e}")
-
-        time.sleep(POST_INTERVAL)
+    bot.send_message(chat_id=CHANNEL_ID, text=message)
 
 if __name__ == "__main__":
-    post_to_channel()
+    run_once()
